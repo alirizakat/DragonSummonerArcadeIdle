@@ -8,7 +8,9 @@ public class GameManager : MonoBehaviour
     public GameObject tapToPlay, player, humanGenerator, camera;
     public bool gameStarted;
     bool doOnce;
+    bool sendMinion;
     public Transform camPosPreStart, camPosStart; 
+    public GameObject enemyGenerator;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +23,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         TapToPlay();
+        CheckForMinion();
     }
     void StartGame()
     {
@@ -35,8 +38,6 @@ public class GameManager : MonoBehaviour
     {
         if(Input.GetMouseButton(0) && !doOnce)
         {
-            //camera.GetComponent<CameraFollow>().enabled = true;
-            //camera.transform.rotation = camPosStart.rotation;
             StartCoroutine(StartRoutine());
         }
     }
@@ -49,6 +50,19 @@ public class GameManager : MonoBehaviour
         doOnce = true;
         gameStarted = true;
         StartGame();
+    }
+    void CheckForMinion()
+    {
+        GameObject temp = GameObject.Find("Minion");
+        if(temp == null)
+        {
+            return;
+        }
+        if(temp.activeInHierarchy && !sendMinion)
+        {
+            enemyGenerator.SetActive(true);
+            sendMinion = true;
+        }
     }
 
 }

@@ -66,8 +66,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.6358197, y: 6.1523867, z: 1.0748023}
-  m_Center: {x: 0.0187006, y: 3.4238067, z: 0.03740114}
+  m_Size: {x: 4.282965, y: 6.656459, z: 3.4993305}
+  m_Center: {x: 0.12134385, y: 3.6758428, z: -0.1477766}
 --- !u!54 &794838551754458554
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collectArea: 0
+  attacking: 0
 --- !u!114 &2285759693241767574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,6 +113,7 @@ MonoBehaviour:
   humanList: []
   humanPrefab: {fileID: 2258069136728899934, guid: 21db92e08aba36f499b8588e8028fcd6, type: 3}
   collectPoint: {fileID: 7445283419984605128}
+  humanLimit: 10
 --- !u!114 &1184753856
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -27,12 +27,16 @@ public class AnimatorManager : MonoBehaviour
     {
         animation.CrossFade("move_forward");
     }
-    public void Collect()
+    public void Attack()
     {
         animation.CrossFade("attack_short_001");
     }
     public void Idle()
     {
         animation.CrossFade("idle_normal");
+    }
+    public void Dead()
+    {
+        animation.CrossFade("dead");
     }
 }

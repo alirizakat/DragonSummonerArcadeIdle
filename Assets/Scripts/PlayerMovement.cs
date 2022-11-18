@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float movementSpeed=5;
     [SerializeField] private float rotationSpeed = 500;
     private static AnimatorManager animatorManager;
+    public static TriggerManager triggerManager;
     private Touch _touch;
 
     private Vector3 _touchDown;
@@ -24,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         animatorManager = gameObject.GetComponent<AnimatorManager>();
+        triggerManager = gameObject.GetComponent<TriggerManager>();
     }
     //this script doesn't work on Game window, since game window doesn't count mouse clicks as touches
     //use Simulator screen or Unity Remote to use the script effectively.
@@ -41,7 +43,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.touchCount > 0)
         {
-            animatorManager.MoveForward();
+            if(!triggerManager.attacking)
+            {
+                animatorManager.MoveForward();
+            }
             _touch = Input.GetTouch(0);
             if (_touch.phase == TouchPhase.Began)
             {
@@ -63,7 +68,10 @@ public class PlayerMovement : MonoBehaviour
                 _touchDown = _touch.position;
                 _isMoving = false;
                 _dragStarted = false;
-                animatorManager.Idle();
+                if(!triggerManager.attacking)
+                {
+                    animatorManager.Idle();
+                }
             }
             gameObject.transform.rotation=Quaternion.RotateTowards(transform.rotation,CalculateRotation(),rotationSpeed*Time.deltaTime);
             gameObject.transform.Translate(Vector3.forward*Time.deltaTime*movementSpeed);

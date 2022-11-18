@@ -19,12 +19,14 @@ public class TriggerManager : MonoBehaviour
     public static event OnBuyArea OnSummonDragon;
 
     public static BuyArea areaToBuy;
-
+    public static AnimatorManager animatorManager;
     bool isCollecting, isGiving;
     public bool collectArea;
+    public bool attacking;
     // Start is called before the first frame update
     void Start()
     {
+        animatorManager = gameObject.GetComponent<AnimatorManager>();
         StartCoroutine(CollectEnum());
     }
     IEnumerator CollectEnum()
@@ -49,6 +51,18 @@ public class TriggerManager : MonoBehaviour
             OnSkullCollect();
             Destroy(other.gameObject);
         }
+        if(other.gameObject.CompareTag("Enemy"))
+        {
+            attacking = true;
+            StartCoroutine(FightRoutine(other.gameObject));   
+        }
+    }
+    IEnumerator FightRoutine(GameObject other)
+    {
+        animatorManager.Attack();
+        yield return new WaitForSeconds(1.5f);
+        Destroy(other.gameObject);
+        attacking = false;
     }
     void OnTriggerStay(Collider other)
     {

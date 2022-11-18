@@ -10,11 +10,21 @@ public class DragonManager : MonoBehaviour
     public Transform givePoint, skullPoint;
     public GameObject humanPrefab, skullPrefab;
     public Animator dragonAnimator;
-
+    public GameObject buyArea;
+    public int dragonHitPoint = 10;
     void OnEnable()
     {
+        dragonHitPoint = 10;
         gameObject.transform.DOScale(new Vector3(1,1,1), 1.0f);
         dragonAnimator.SetTrigger("scream");
+        StartCoroutine(GenerateSkull());
+    }
+    /// <summary>
+    /// This function is called when the behaviour becomes disabled or inactive.
+    /// </summary>
+    void OnDisable()
+    {
+        buyArea.SetActive(true);
     }
     public void GetHuman()
     {
@@ -24,7 +34,7 @@ public class DragonManager : MonoBehaviour
     }
     void Start()
     {
-        StartCoroutine(GenerateSkull());
+        
     }
     IEnumerator GenerateSkull()
     {
@@ -51,6 +61,17 @@ public class DragonManager : MonoBehaviour
         {
             Destroy(humanList[humanList.Count - 1]);
             humanList.RemoveAt(humanList.Count - 1);
+        }
+    }
+    void Update()
+    {
+        CheckHitPoints();
+    }
+    void CheckHitPoints()
+    {
+        if(dragonHitPoint <= 0)
+        {
+            gameObject.SetActive(false);
         }
     }
 }
