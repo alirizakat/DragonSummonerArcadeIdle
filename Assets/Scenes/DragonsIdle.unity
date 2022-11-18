@@ -306,6 +306,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6546281101244829785, guid: 2b78273f8a257434495ba670dcf52233, type: 3}
+      propertyPath: dragonAnimator
+      value: 
+      objectReference: {fileID: 433991771}
     - target: {fileID: 6546281101244829791, guid: 2b78273f8a257434495ba670dcf52233, type: 3}
       propertyPath: m_Name
       value: DragonArea3
@@ -1034,7 +1038,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 25, z: 25}
-  chaseSpeed: 30
+  chaseSpeed: 20
 --- !u!4 &425670030
 Transform:
   m_ObjectHideFlags: 0
@@ -1051,6 +1055,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 45, y: 180, z: 0}
+--- !u!95 &433991771 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 210283080540651052, guid: 2b78273f8a257434495ba670dcf52233, type: 3}
+  m_PrefabInstance: {fileID: 112583702}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &497760153 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6546281101244829791, guid: 2b78273f8a257434495ba670dcf52233, type: 3}
+  m_PrefabInstance: {fileID: 6546281099995071724}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &497760157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 497760153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec429223dc7f8eb4da3a35b17333afe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &500670203
 GameObject:
   m_ObjectHideFlags: 0
@@ -1904,6 +1930,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6546281101244829785, guid: 2b78273f8a257434495ba670dcf52233, type: 3}
+      propertyPath: dragonAnimator
+      value: 
+      objectReference: {fileID: 1736073875}
     - target: {fileID: 6546281101244829791, guid: 2b78273f8a257434495ba670dcf52233, type: 3}
       propertyPath: m_Name
       value: DragonArea4
@@ -2260,6 +2290,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3b8ca9afe1758d418f6b04dde2e4d08, type: 3}
+--- !u!95 &974174004 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6546281100958214045, guid: 2b78273f8a257434495ba670dcf52233, type: 3}
+  m_PrefabInstance: {fileID: 6546281099995071724}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1017634088 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 60624a2897f1f6444a00dd774025a141, type: 3}
@@ -2545,6 +2580,18 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 794838551754458558, guid: a60c1a4583e23e245af78a46ff9c60b0, type: 3}
   m_PrefabInstance: {fileID: 794838552868400391}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1184753857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1184753849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec429223dc7f8eb4da3a35b17333afe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1187892777
 GameObject:
   m_ObjectHideFlags: 0
@@ -3141,6 +3188,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6546281101244829785, guid: 2b78273f8a257434495ba670dcf52233, type: 3}
+      propertyPath: dragonAnimator
+      value: 
+      objectReference: {fileID: 2000888867}
     - target: {fileID: 6546281101244829791, guid: 2b78273f8a257434495ba670dcf52233, type: 3}
       propertyPath: m_Name
       value: DragonArea2
@@ -3831,6 +3882,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1725194663}
   m_CullTransparentMesh: 1
+--- !u!95 &1736073875 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7982813882164148103, guid: 2b78273f8a257434495ba670dcf52233, type: 3}
+  m_PrefabInstance: {fileID: 858148244}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1758836119 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 60624a2897f1f6444a00dd774025a141, type: 3}
@@ -4236,6 +4292,11 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!95 &2000888867 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9116302963585283655, guid: 2b78273f8a257434495ba670dcf52233, type: 3}
+  m_PrefabInstance: {fileID: 1457873971}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2072137978
 GameObject:
   m_ObjectHideFlags: 0
@@ -4351,6 +4412,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 794838551754458558, guid: a60c1a4583e23e245af78a46ff9c60b0, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a60c1a4583e23e245af78a46ff9c60b0, type: 3}
 --- !u!1001 &6546281099995071724
@@ -4408,6 +4473,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6546281101244829785, guid: 2b78273f8a257434495ba670dcf52233, type: 3}
+      propertyPath: dragonAnimator
+      value: 
+      objectReference: {fileID: 974174004}
     - target: {fileID: 6546281101244829791, guid: 2b78273f8a257434495ba670dcf52233, type: 3}
       propertyPath: m_Name
       value: DragonArea

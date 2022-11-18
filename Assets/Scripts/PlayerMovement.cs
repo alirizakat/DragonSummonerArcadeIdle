@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float movementSpeed=5;
     [SerializeField] private float rotationSpeed = 500;
-
+    private static AnimatorManager animatorManager;
     private Touch _touch;
 
     private Vector3 _touchDown;
@@ -17,6 +17,14 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private float _zLimit;
     [SerializeField] private float _xLimit;
+    /// <summary>
+    /// Start is called on the frame when a script is enabled just before
+    /// any of the Update methods is called the first time.
+    /// </summary>
+    void Start()
+    {
+        animatorManager = gameObject.GetComponent<AnimatorManager>();
+    }
     //this script doesn't work on Game window, since game window doesn't count mouse clicks as touches
     //use Simulator screen or Unity Remote to use the script effectively.
     //create another movement speed value and multiply it with movement speed in line 56, if you want to enhance movement speed in some other way. 
@@ -33,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.touchCount > 0)
         {
+            animatorManager.MoveForward();
             _touch = Input.GetTouch(0);
             if (_touch.phase == TouchPhase.Began)
             {
@@ -54,6 +63,7 @@ public class PlayerMovement : MonoBehaviour
                 _touchDown = _touch.position;
                 _isMoving = false;
                 _dragStarted = false;
+                animatorManager.Idle();
             }
             gameObject.transform.rotation=Quaternion.RotateTowards(transform.rotation,CalculateRotation(),rotationSpeed*Time.deltaTime);
             gameObject.transform.Translate(Vector3.forward*Time.deltaTime*movementSpeed);

@@ -9,10 +9,12 @@ public class DragonManager : MonoBehaviour
     List<GameObject> skullList = new List<GameObject>();
     public Transform givePoint, skullPoint;
     public GameObject humanPrefab, skullPrefab;
+    public Animator dragonAnimator;
 
     void OnEnable()
     {
         gameObject.transform.DOScale(new Vector3(1,1,1), 1.0f);
+        dragonAnimator.SetTrigger("scream");
     }
     public void GetHuman()
     {
@@ -33,7 +35,12 @@ public class DragonManager : MonoBehaviour
                 GameObject temp = Instantiate(skullPrefab);
                 temp.transform.position = new Vector3(skullPoint.position.x,((float)skullList.Count),skullPoint.position.z);
                 skullList.Add(temp);
+                dragonAnimator.SetTrigger("eat");
                 RemoveLast();
+            }
+            else
+            {
+                dragonAnimator.SetTrigger("idle");
             }
             yield return new WaitForSeconds(1.5f);
         }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class MinionMovement : MonoBehaviour
 {
     public List<GameObject> dropPoints = new List<GameObject>();
+    private static AnimatorManager animatorManager;
     public int collectedBody;
     public Transform collectPoint;
     public float speed;
@@ -12,7 +13,7 @@ public class MinionMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        animatorManager = gameObject.GetComponent<AnimatorManager>();
     }
     void Update()
     {
@@ -20,14 +21,23 @@ public class MinionMovement : MonoBehaviour
         GoToDrop();
         KeepCollectCount();
         FindDropPoints();
+        IdleAtCollectPoint();
     }
     void GoToCollect()
     {
         if(collectedBody == 0)
         {
             transform.position = Vector3.MoveTowards(transform.position, collectPoint.position, speed * Time.deltaTime);
+            animatorManager.MoveForward();
             transform.LookAt(collectPoint);
             PickRandomDropPoint();
+        }
+    }
+    void IdleAtCollectPoint()
+    {
+        if(gameObject.transform.position == collectPoint.position)
+        {
+            animatorManager.Idle();
         }
     }
     void FindDropPoints()
