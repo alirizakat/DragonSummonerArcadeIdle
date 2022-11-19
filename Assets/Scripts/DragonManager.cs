@@ -19,13 +19,7 @@ public class DragonManager : MonoBehaviour
         dragonAnimator.SetTrigger("scream");
         StartCoroutine(GenerateSkull());
     }
-    /// <summary>
-    /// This function is called when the behaviour becomes disabled or inactive.
-    /// </summary>
-    void OnDisable()
-    {
-        buyArea.SetActive(true);
-    }
+
     public void GetHuman()
     {
         GameObject temp = Instantiate(humanPrefab);
@@ -71,6 +65,7 @@ public class DragonManager : MonoBehaviour
     {
         if(dragonHitPoint <= 0)
         {
+            buyArea.SetActive(true);
             gameObject.SetActive(false);
         }
     }
