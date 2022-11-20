@@ -8,6 +8,15 @@ public class BuyArea : MonoBehaviour
     public GameObject buyAreaObj, dragonObj;
     public float cost, currentSkull, progress;
     public Image progressImage;
+    /// <summary>
+    /// This function is called when the object becomes enabled and active.
+    /// </summary>
+    void OnEnable()
+    {
+        currentSkull = 0;
+        progress = 0;
+        progressImage.fillAmount = 0;
+    }
     public void Buy(int skullAmount)
     {
         currentSkull += skullAmount;
@@ -17,7 +26,6 @@ public class BuyArea : MonoBehaviour
         {
             buyAreaObj.SetActive(false);
             dragonObj.SetActive(true);
-            this.enabled = false;
         }
     }
 }

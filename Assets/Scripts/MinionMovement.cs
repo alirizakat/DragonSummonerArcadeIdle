@@ -10,6 +10,7 @@ public class MinionMovement : MonoBehaviour
     public Transform collectPoint;
     public float speed;
     int randomNumber;
+    bool doneOnce;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,19 +19,19 @@ public class MinionMovement : MonoBehaviour
     void Update()
     {
         GoToCollect();
-        GoToDrop();
-        KeepCollectCount();
         FindDropPoints();
+        KeepCollectCount();
+        GoToDrop();        
         IdleAtCollectPoint();
     }
     void GoToCollect()
     {
         if(collectedBody == 0)
         {
+            doneOnce = false;
             transform.position = Vector3.MoveTowards(transform.position, collectPoint.position, speed * Time.deltaTime);
             animatorManager.MoveForward();
             transform.LookAt(collectPoint);
-            PickRandomDropPoint();
         }
     }
     void IdleAtCollectPoint()
@@ -47,6 +48,28 @@ public class MinionMovement : MonoBehaviour
         {
             dropPoints.Add(drPoint);
         }
+        PickRandomDropPoint();
+    }
+    void PickRandomDropPoint()
+    {
+        if(!doneOnce)
+        {
+            randomNumber = Random.Range(0, dropPoints.Count);
+            doneOnce = true;
+        }
+        else
+        {
+            return;
+        }
+        
+        if(randomNumber > 0)
+        {
+            GoToDrop();
+        }
+        else
+        {
+            return;
+        }
     }
     void GoToDrop()
     {
@@ -55,10 +78,6 @@ public class MinionMovement : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, dropPoints[randomNumber].transform.position, speed * Time.deltaTime);
             transform.LookAt(dropPoints[randomNumber].transform);
         }
-    }
-    void PickRandomDropPoint()
-    {
-        randomNumber = Random.Range(0, dropPoints.Count);
     }
     void KeepCollectCount()
     {
