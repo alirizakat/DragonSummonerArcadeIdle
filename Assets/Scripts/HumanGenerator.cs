@@ -32,7 +32,7 @@ public class HumanGenerator : MonoBehaviour
             if(isWorking)
             {
                 GameObject temp = Instantiate(humanPrefab);
-                temp.transform.position = new Vector3(exitPoint.position.x + ((float)rowCount%4)*2, (humanCount%stackCount), exitPoint.position.z);
+                temp.transform.position = new Vector3(exitPoint.position.x + ((float)rowCount%4)*2, (humanCount%stackCount)+0.5f, exitPoint.position.z);
                 humanList.Add(temp);
                 if(humanList.Count >= humanLimit)
                 {

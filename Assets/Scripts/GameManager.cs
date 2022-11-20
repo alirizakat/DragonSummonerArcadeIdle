@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject tapToPlay, player, humanGenerator, camera;
+    public GameObject tapToPlay, player, humanGenerator, camera, skullCount;
     public bool gameStarted;
     bool doOnce;
     bool sendMinion;
@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
             player.GetComponent<PlayerMovement>().enabled = true;
             humanGenerator.GetComponent<HumanGenerator>().enabled = true;
             tapToPlay.SetActive(false);
+            skullCount.SetActive(true);
         }
     }
     void TapToPlay()

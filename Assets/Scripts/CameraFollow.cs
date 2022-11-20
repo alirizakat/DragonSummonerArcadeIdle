@@ -8,7 +8,7 @@ public class CameraFollow : MonoBehaviour
     private Transform target;
     //offset vector determines how far the camera will follow the player object
     [SerializeField] private Vector3 offset;
-    [SerializeField] private float chaseSpeed = 5;
+    public float chaseSpeed = 5;
 
     //We use the PlayerMovement script to find the player object but any other method would also work just fine.
     void Start()

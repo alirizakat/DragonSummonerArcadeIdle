@@ -17,6 +17,7 @@ public class CollectManager : MonoBehaviour
     void Update()
     {
         canCollect = triggerManager.collectArea;
+        CheckForMax();
     }
     void OnEnable()
     {
@@ -57,6 +58,13 @@ public class CollectManager : MonoBehaviour
         {
             Destroy(humanList[humanList.Count - 1]);
             humanList.RemoveAt(humanList.Count - 1);
+        }
+    }
+    void CheckForMax()
+    {
+        if(humanList.Count == humanLimit)
+        {
+            Debug.Log("Max");
         }
     }
 }

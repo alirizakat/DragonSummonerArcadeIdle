@@ -23,6 +23,8 @@ public class TriggerManager : MonoBehaviour
     bool isCollecting, isGiving;
     public bool collectArea;
     public bool attacking;
+    public GameObject upgradeManager;
+    public float waitTime;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,12 +38,14 @@ public class TriggerManager : MonoBehaviour
             if(isCollecting == true)
             {
                 OnHumanCollect();
+                waitTime = 0.6f;
             }
             if(isGiving == true)
             {
                 OnDropHuman();
+                waitTime = 0.3f;
             }
-            yield return new WaitForSeconds(0.8f);
+            yield return new WaitForSeconds(waitTime);
         }
     }
     void OnTriggerEnter(Collider other)
@@ -55,6 +59,10 @@ public class TriggerManager : MonoBehaviour
         {
             attacking = true;
             StartCoroutine(FightRoutine(other.gameObject));   
+        }
+        if(other.gameObject.CompareTag("UpgradeArea"))
+        {
+            upgradeManager.SetActive(true);
         }
     }
     IEnumerator FightRoutine(GameObject other)
@@ -99,6 +107,10 @@ public class TriggerManager : MonoBehaviour
         if(other.gameObject.CompareTag("BuyArea"))
         {
             areaToBuy = null;
+        }
+        if(other.gameObject.CompareTag("UpgradeArea"))
+        {
+            upgradeManager.SetActive(false);
         }
     }
 }

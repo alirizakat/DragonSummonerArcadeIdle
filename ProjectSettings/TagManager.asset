@@ -11,6 +11,7 @@ TagManager:
   - AttackPoints
   - Enemy
   - Minion
+  - UpgradeArea
   layers:
   - Default
   - TransparentFX

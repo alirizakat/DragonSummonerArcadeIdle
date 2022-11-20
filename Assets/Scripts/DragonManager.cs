@@ -44,7 +44,7 @@ public class DragonManager : MonoBehaviour
             }
             else
             {
-                dragonAnimator.SetTrigger("idle");
+                //dragonAnimator.SetTrigger("idle");
             }
             yield return new WaitForSeconds(1.5f);
         }
