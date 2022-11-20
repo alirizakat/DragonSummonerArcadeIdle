@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CollectManager : MonoBehaviour
 {
@@ -10,6 +11,10 @@ public class CollectManager : MonoBehaviour
     public static TriggerManager triggerManager;
     bool canCollect;
     public int humanLimit = 10;
+    public GameObject maxPrefab;
+    private Text maxObj;
+    bool isMax;
+    public Vector3 offset;
     void Start()
     {
         triggerManager = gameObject.GetComponent<TriggerManager>();
@@ -18,6 +23,7 @@ public class CollectManager : MonoBehaviour
     {
         canCollect = triggerManager.collectArea;
         CheckForMax();
+        MoveMax();
     }
     void OnEnable()
     {
@@ -62,9 +68,33 @@ public class CollectManager : MonoBehaviour
     }
     void CheckForMax()
     {
-        if(humanList.Count == humanLimit)
+        if(humanList.Count - 1 == humanLimit && !isMax)
         {
-            Debug.Log("Max");
+            maxObj = Instantiate(maxPrefab, FindObjectOfType<Canvas>().transform).GetComponent<Text>();
+            isMax = true;
+        }
+        else if(humanList.Count - 1 != humanLimit)
+        {
+            isMax = false;
+        }
+    }
+    void MoveMax()
+    {
+        if(isMax)
+        {
+            GameObject tempPlayer = GameObject.Find("Player");
+            maxObj.gameObject.transform.position = Camera.main.WorldToScreenPoint(tempPlayer.transform.position + offset);
+        }
+        else if(!isMax)
+        {
+            if(maxObj == null)
+            {
+                return;
+            }
+            if(maxObj.gameObject.activeInHierarchy)
+            {
+                Destroy(maxObj.gameObject);
+            }
         }
     }
 }

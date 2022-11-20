@@ -10,10 +10,12 @@ public class EnemyMovement : MonoBehaviour
     int randomNumber;
     bool isEnemySelected;
     private Vector3 goPoint;
+    public GameObject lookPoint;
 
     // Start is called before the first frame update
     void Start()
     {
+        lookPoint = GameObject.Find("LookPoint");
         animatorManager = gameObject.GetComponent<AnimatorManager>();
     }
 
@@ -45,7 +47,8 @@ public class EnemyMovement : MonoBehaviour
     {
         if(!isEnemySelected)
         {
-            var point = hitPoints[Random.Range(0, hitPoints.Count)].transform.position;
+            lookPoint = hitPoints[Random.Range(0, hitPoints.Count)];
+            var point = lookPoint.transform.position;
             isEnemySelected = true;
             return point;
         }
@@ -65,6 +68,7 @@ public class EnemyMovement : MonoBehaviour
         {
             transform.position = Vector3.MoveTowards(transform.position, goPoint, speed * Time.deltaTime);
             animatorManager.MoveForward();
+            transform.LookAt(lookPoint.transform);
         }
     }
 }
