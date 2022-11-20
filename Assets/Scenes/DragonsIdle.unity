@@ -7723,7 +7723,7 @@ GameObject:
   - component: {fileID: 1677929878}
   - component: {fileID: 1677929877}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: MaxCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10829,7 +10829,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2285759693241767574, guid: a60c1a4583e23e245af78a46ff9c60b0, type: 3}
       propertyPath: offset.y
-      value: 2
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2285759693241767574, guid: a60c1a4583e23e245af78a46ff9c60b0, type: 3}
       propertyPath: maxPrefab

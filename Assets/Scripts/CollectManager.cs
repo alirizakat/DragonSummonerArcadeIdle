@@ -70,7 +70,8 @@ public class CollectManager : MonoBehaviour
     {
         if(humanList.Count - 1 == humanLimit && !isMax)
         {
-            maxObj = Instantiate(maxPrefab, FindObjectOfType<Canvas>().transform).GetComponent<Text>();
+            Debug.Log("max");
+            maxObj = Instantiate(maxPrefab, GameObject.Find("MaxCanvas").transform).GetComponent<Text>();
             isMax = true;
         }
         else if(humanList.Count - 1 != humanLimit)
@@ -83,7 +84,7 @@ public class CollectManager : MonoBehaviour
         if(isMax)
         {
             GameObject tempPlayer = GameObject.Find("Player");
-            maxObj.gameObject.transform.position = Camera.main.WorldToScreenPoint(tempPlayer.transform.position + offset);
+            maxObj.transform.position = Camera.main.WorldToScreenPoint(tempPlayer.transform.position + offset);
         }
         else if(!isMax)
         {
