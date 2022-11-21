@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//this can be done in some various ways, i wanted to use a level logic on the upgrades, 
+//it might look complicated at first look but it's easy logic
+//each upgrade has it's own public function to be called within the button in upgrade menu.
+//on each successful transaction, button levels up and changes it's own color to symbolize that, after 3rd it goes max
+//menu and not enough money text has animations when enabled btw.
+//each increase amount is hard-coded. there are no logical explanations for anything hard-coded, it's just a bit laziness :)
+
 public class UpgradeManager : MonoBehaviour
 {
     public GameObject player, minion, camera;
@@ -14,9 +21,7 @@ public class UpgradeManager : MonoBehaviour
     public GameObject but1PriceObj, but2PriceObj, but3PriceObj;
     public int currentSkull;
     public GameObject notEnoughMoneyText;
-    /// <summary>
-    /// This function is called when the object becomes enabled and active.
-    /// </summary>
+
     void OnEnable()
     {
         notEnoughMoneyText.SetActive(false);
@@ -30,7 +35,7 @@ public class UpgradeManager : MonoBehaviour
             if(currentSkull >= but1Price)
             {
                 but1Level++;
-                player.GetComponent<PlayerMovement>().movementSpeed = 20;
+                player.GetComponent<PlayerMovement>().movementSpeed = 20; //change this value for level 1 speed upgrade logic goes same in each function
                 but1.GetComponent<Button>().image.sprite = green;
                 player.GetComponent<BuyManager>().skullCount = currentSkull - but1Price;
                 break;
@@ -225,9 +230,6 @@ public class UpgradeManager : MonoBehaviour
                 break;
         }
     }
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// </summary>
     void Update()
     {
         UpgradePrices();

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//This script handles the buy area behaviours
+//Reducing the payment amount and filling the progress img etc.
 public class BuyArea : MonoBehaviour
 {
     public GameObject buyAreaObj, dragonObj;
@@ -17,6 +19,8 @@ public class BuyArea : MonoBehaviour
         progress = 0;
         progressImage.fillAmount = 0;
     }
+    //Enabling and disabling the object is an okay idea imo. in here 
+    //since we allow dragons to die and make the player buy them again
     public void Buy(int skullAmount)
     {
         currentSkull += skullAmount;

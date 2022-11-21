@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
+//for now game manager is a really simple script, it does various stuff which can be seperated into other scripts but also can be done in here imo. not all that spaghetti
+//what game manager does for now is, it handles the camera animation in the start of the game, 
+//which is done by points in the hierarchy (camPosPreStart)
+//also enemy generator is enabled when we have our own minion, it's controlled in here.
+//Game Manager checks if we have the minion or not, it can be done with a simple boolean coming from minion and would save some memory
+//However i'm planning to have multiple minions also on our side, or minions doing different stuff from each other. so checking for it is not much of a stuff.
+
 public class GameManager : MonoBehaviour
 {
     public GameObject tapToPlay, player, humanGenerator, camera, skullCount;

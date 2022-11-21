@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//this script doesn't work on Game window, since game window doesn't count mouse clicks as touches
+    //use Simulator screen or Unity Remote to use the script effectively.
+    //create another movement speed value and multiply it with movement speed in line 56, if you want to enhance movement speed in some other way. 
 public class PlayerMovement : MonoBehaviour
 {
     public float movementSpeed = 5;
@@ -27,9 +30,7 @@ public class PlayerMovement : MonoBehaviour
         animatorManager = gameObject.GetComponent<AnimatorManager>();
         triggerManager = gameObject.GetComponent<TriggerManager>();
     }
-    //this script doesn't work on Game window, since game window doesn't count mouse clicks as touches
-    //use Simulator screen or Unity Remote to use the script effectively.
-    //create another movement speed value and multiply it with movement speed in line 56, if you want to enhance movement speed in some other way. 
+    
     void Update()
     {
         Movement();
@@ -77,6 +78,8 @@ public class PlayerMovement : MonoBehaviour
             gameObject.transform.Translate(Vector3.forward*Time.deltaTime*movementSpeed);
         }
     }
+    //Almost every object in game has trigger colliders and the scaling in the project is not done carefully
+    //This causes sometimes issues on unity like colliders doesn't work properly and because of that we use border logic for now.
     //This function is used for games that doesn't have walls or etc. 
     //Having a border function is helpful for game to not to break if user pushes for it.
     void Borders()

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Not going to mention much in here, just like collect manager this is also a copy version of player's trigger manager
+//There are some differences though, minion does most of it's stuff in stay and exit triggers
 public class MinionTriggerManager : MonoBehaviour
 {
     public delegate void minionOnCollectArea();
@@ -44,6 +46,7 @@ public class MinionTriggerManager : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
+        //we probably don't need this, will push this version but check and remove this part in the future. 
         if(other.gameObject.CompareTag("Skull"))
         {
             minionOnSkullCollect();

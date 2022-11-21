@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This is an average camera follow method, for this project it doesn't need much improvement 
 public class CameraFollow : MonoBehaviour
 {
     private Transform target;
@@ -20,6 +21,10 @@ public class CameraFollow : MonoBehaviour
     }
     //always update camera movement in late update
     private void LateUpdate()
+    {
+        TransformCamPos();
+    }
+    void TransformCamPos()
     {
         transform.position=Vector3.Lerp(transform.position,target.position+offset,chaseSpeed*Time.deltaTime);
     }

@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Literally same logic with human collect manager, 
+//Minion doesn't have anything unnecessary like ui control or other stuff in here, 
+//Rest of the script is almost copy paste from the original CollectManager.
 public class MinionCollectManager : MonoBehaviour
 {
     public List<GameObject> humanList = new List<GameObject>();
     public GameObject humanPrefab;
     public Transform collectPoint;
     public static MinionTriggerManager triggerManager;
-    bool canCollect;
+    public bool canCollect;
     public int humanLimit = 10;
     void Start()
     {
@@ -30,7 +33,7 @@ public class MinionCollectManager : MonoBehaviour
     }   
     void GetHuman()
     {
-        if(humanList.Count <= humanLimit && canCollect)
+        if(humanList.Count <= humanLimit - 1 && canCollect)
         {
             GameObject temp = Instantiate(humanPrefab, collectPoint);
             temp.transform.position = 

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This script mainly controls the animations of the each character in the game
+//Mostly it's unnecessary right now, if I decide to make the project a bit bigger I'll make some changes on here.
 public class AnimatorManager : MonoBehaviour
 {
     private Animation animation;
@@ -23,6 +25,11 @@ public class AnimatorManager : MonoBehaviour
         }
  
     }
+    //All these functions are the animations of the minions and player
+    //Each minion and player has animation component on it, which can be called in here
+    //Using a switch statement in just one function could be a much better idea. note to myself.
+    
+    //Animations are called from animator manager in different scripts.
     public void MoveForward()
     {
         animation.CrossFade("move_forward");

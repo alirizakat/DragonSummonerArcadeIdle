@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Simple prefab generation script. this script creates 4 stacks of 5, 
+//limit count and stack count can be changed easily, but if you change it check GenerateHuman method too. 
 public class HumanGenerator : MonoBehaviour
 {
     public List<GameObject> humanList = new List<GameObject>();
@@ -43,6 +45,7 @@ public class HumanGenerator : MonoBehaviour
             {
                 isWorking = true;
             }
+            //change this float number if you want faster or slower generation.
             yield return new WaitForSeconds(1.0f);
         }
     }
